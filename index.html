@@ -13,25 +13,35 @@
             color: white;
             line-height: 1.6;
         }
+        /* 헤더를 가로로 배치하도록 수정 */
         header {
-            padding: 20px;
-            text-align: center;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* 중앙 정렬 */
             background: #1a1a1a;
             border-bottom: 2px solid #f3d03e;
+            gap: 15px; /* 로고와 글자 사이 간격 */
         }
         .logo {
-            width: 80px;
-            border-radius: 15px;
+            width: 50px; /* 크기를 살짝 줄여서 한 줄에 어울리게 조절 */
+            border-radius: 10px;
+        }
+        /* 헤더 안의 제목 스타일 */
+        header h1 {
+            color: #f3d03e;
+            font-size: 1.8rem;
+            margin: 0; /* 제목 여백 제거 */
         }
         .hero {
-            padding: 60px 20px;
+            padding: 40px 20px;
             text-align: center;
             background: linear-gradient(180deg, #1a1a1a 0%, #121212 100%);
         }
-        h1 {
-            color: #f3d03e;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        .hero p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-top: 5px;
         }
         .main-content {
             max-width: 1000px;
@@ -79,16 +89,16 @@
 
 <header>
     <img src="coin_app_icon.webp" alt="Coin Guardian Logo" class="logo">
+    <h1>Coin Guardian</h1>
 </header>
 
 <section class="hero">
-    <h1>Coin Guardian</h1>
     <p>한순간도 놓치지 않는 가장 완벽한 코인 감시자</p>
 </section>
 
 <div class="main-content">
     <!-- 메인 화면 -->
-    <img src="app_main.jpg" alt="Coin Guardian Main" class="app-screenshot">
+    <img src="KakaoTalk_20260502_210705946.jpg" alt="Coin Guardian Main" class="app-screenshot">
     
     <div class="feature-desc">
         <div class="feature-item">
@@ -104,7 +114,7 @@
 
 <div class="main-content" style="flex-direction: row-reverse;">
     <!-- 알람 화면 -->
-    <img src="app_alert.jpg" alt="Coin Guardian Alert" class="app-screenshot">
+    <img src="KakaoTalk_20260503_041043107_01.jpg" alt="Coin Guardian Alert" class="app-screenshot">
     
     <div class="feature-desc">
         <div class="feature-item">
