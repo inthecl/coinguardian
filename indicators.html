@@ -413,10 +413,32 @@
 
 </div>
 
-<footer>
-    <p>&copy; 2026 Coin Guardian. Empowering crypto traders worldwide.</p>
-    <p>Contact: <a href="mailto:coinguardian.app@gmail.com" class="contact">coinguardian.app@gmail.com</a></p>
+<footer style="background: #000; padding: 60px 24px;">
+  <div class="footer-inner" style="max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; text-align: left;">
+    <div class="footer-text">
+      <p style="margin: 0; color: var(--text-faint); font-size: 0.85rem;">&copy; 2026 Coin Guardian. Empowering crypto traders worldwide.</p>
+      <p style="margin: 6px 0 0; color: var(--text-faint); font-size: 0.85rem;">Contact: <a href="mailto:coinguardian.app@gmail.com" class="contact">coinguardian.app@gmail.com</a></p>
+    </div>
+
+    <a href="https://play.google.com/store/apps/details?id=com.coinguardian.app" class="footer-badge">
+      <img src="google-play-badge.png" alt="Get it on Google Play" style="height: 50px;">
+    </a>
+  </div>
 </footer>
+
+<style>
+  @media (max-width: 600px) {
+    .footer-inner {
+      flex-direction: column;
+      text-align: center !important;
+      justify-content: center !important;
+    }
+    .footer-badge {
+      order: -1;
+      margin-bottom: 8px;
+    }
+  }
+</style>
 
 <script>
     const toggle = document.getElementById('navToggle');
