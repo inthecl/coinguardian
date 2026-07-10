@@ -170,17 +170,27 @@
             background: linear-gradient(180deg, var(--bg-raised) 0%, var(--bg) 100%);
         }
 
-        .hero .eyebrow {
+        .hero .eyebrow-btn {
             display: inline-block;
-            font-size: 0.78rem;
+            font-size: 1rem;
             font-weight: 700;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             color: var(--gold);
-            border: 1px solid var(--gold-dim);
+            border: 1.5px solid var(--gold-dim);
             border-radius: 999px;
-            padding: 6px 14px;
+            padding: 14px 30px;
             margin-bottom: 18px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 0 14px rgba(243, 208, 62, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        .hero .eyebrow-btn:hover {
+            background: rgba(243, 208, 62, 0.1);
+            box-shadow: 0 0 22px rgba(243, 208, 62, 0.35);
+            transform: translateY(-1px);
         }
 
         .hero h2 {
@@ -273,13 +283,16 @@
     <nav class="main-nav" id="mainNav">
         <a href="#" class="active">Home</a>
         <a href="indicators.html">Indicators</a>
-        <a href="#membership">Membership</a>
         <a href="#referral" class="cta-free"><span class="dot"></span>Get 1 Year Free</a>
     </nav>
 </header>
 
 <section class="hero">
-    <span class="eyebrow">Real-Time Crypto Alerts</span>
+    <a href="https://play.google.com/store/apps/details?id=com.coinguardian.app"
+       target="_blank"
+       class="eyebrow-btn">
+       Get Started Free &rarr;
+    </a>
     <h2>Never miss a market move.</h2>
     <p>The ultimate real-time crypto monitoring tool for pro traders.</p>
 </section>
