@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
 
+    <script>
+        (function() {
+            var lang = navigator.language || navigator.userLanguage;
+            if (lang && lang.toLowerCase().indexOf('ko') === 0 && location.pathname.indexOf('/ko/') !== 0) {
+                location.replace('/ko/' + location.search + location.hash);
+            }
+        })();
+    </script>
+
     <meta name="google-site-verification" content="IsrNNqn542GZkp6KRU531oKiOlqNBmupC_MaruJ4H44" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
