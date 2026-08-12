@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지표 안내 - 코인가디언</title>
+
+    <link rel="alternate" hreflang="en" href="https://coin-guardian.com/indicators.html" />
+    <link rel="alternate" hreflang="ko" href="https://coin-guardian.com/ko/indicators.html" />
+    <link rel="alternate" hreflang="x-default" href="https://coin-guardian.com/indicators.html" />
+
+    <style>
+        :root {
+            --bg: #121212;
+            --bg-raised: #1a1a1a;
+            --bg-card: #1e1e1e;
+            --gold: #f3d03e;
+            --gold-dim: #b89a2e;
+            --text: #ffffff;
+            --text-dim: #aaaaaa;
+            --text-faint: #666666;
+            --border: #2a2a2a;
+            --green: #4ade80;
+            --red: #f87171;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* ===== Header / Nav ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(26, 26, 26, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--gold);
+            gap: 12px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .brand h1 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        nav.main-nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        nav.main-nav a {
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            padding: 9px 16px;
+            border-radius: 999px;
+            transition: color 0.2s ease, background 0.2s ease;
+            white-space: nowrap;
+        }
+
+        nav.main-nav a:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        nav.main-nav a.active {
+            color: #121212;
+            background: var(--gold);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+
+        @media (max-width: 760px) {
+            nav.main-nav {
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--bg-raised);
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                align-items: stretch;
+                padding: 8px;
+                gap: 2px;
+                display: none;
+            }
+            nav.main-nav.open {
+                display: flex;
+            }
+            nav.main-nav a {
+                width: 100%;
+                text-align: center;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .brand h1 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ===== Page hero ===== */
+        .page-hero {
+            padding: 56px 20px 48px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-raised) 0%, var(--bg) 100%);
+        }
+
+        .page-hero .eyebrow-btn {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1.5px solid var(--gold-dim);
+            border-radius: 999px;
+            padding: 14px 30px;
+            margin-bottom: 18px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 0 14px rgba(243, 208, 62, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        .page-hero .eyebrow-btn:hover {
+            background: rgba(243, 208, 62, 0.1);
+            box-shadow: 0 0 22px rgba(243, 208, 62, 0.35);
+            transform: translateY(-1px);
+        }
+
+        .page-hero h2 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin: 0 0 14px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin: 0 auto;
+            max-width: 560px;
+        }
+
+        /* ===== Indicator rows ===== */
+        .indicators-list {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 20px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .indicator-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            border-left: 4px solid var(--gold);
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            flex-wrap: wrap;
+        }
+
+        .indicator-text {
+            flex: 1.3;
+            min-width: 280px;
+        }
+
+        .indicator-text h3 {
+            margin: 0 0 10px;
+            color: var(--gold);
+            font-size: 1.25rem;
+        }
+
+        .indicator-text p {
+            margin: 0 0 14px;
+            color: var(--text-dim);
+        }
+
+        .signal-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .signal-row .arrow {
+            color: var(--text-faint);
+        }
+
+        .signal-row.up .label {
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .signal-row.down .label {
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        .note {
+            margin-top: 14px;
+            font-size: 0.85rem;
+            color: var(--text-faint);
+            border-top: 1px solid var(--border);
+            padding-top: 12px;
+        }
+
+        .indicator-visual {
+            flex: 1;
+            min-width: 220px;
+            max-width: 260px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .indicator-visual svg {
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 700px) {
+            .indicator-card {
+                flex-direction: column;
+            }
+            .indicator-visual {
+                order: -1;
+                max-width: 220px;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 40px;
+            background: #000;
+            color: var(--text-faint);
+            font-size: 0.85rem;
+        }
+
+        .contact {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="brand">
+        <img src="../coin_app_icon.webp" alt="Coin Guardian" class="logo">
+        <h1>코인가디언</h1>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">&#9776;</button>
+
+    <nav class="main-nav" id="mainNav">
+        <a href="index.html">홈</a>
+        <a href="indicators.html" class="active">지표 안내</a>
+        <a href="support.html">고객지원</a>
+    </nav>
+</header>
+
+<section class="page-hero">
+    <a href="https://play.google.com/store/apps/details?id=com.coinguardian.app"
+       target="_blank"
+       class="eyebrow-btn">
+       무료로 시작하기 &rarr;
+    </a>
+    <h2>모든 지표를 한눈에</h2>
+    <p>코인가디언이 감시하는 신호들과, 각 지표를 어떻게 해석하는지 간단히 안내해드립니다.</p>
+</section>
+
+<div class="indicators-list">
+
+    <div class="indicator-card">
+        <div class="indicator-text">
+            <h3>RSI</h3>
+            <p>매수세와 매도세의 강도를 0에서 100 사이의 값으로 나타냅니다.</p>
+            <div class="signal-row down"><span>70 이상</span><span class="arrow">&rarr;</span><span class="label">과매수, 하락 가능성</span></div>
+            <div class="signal-row up"><span>30 이하</span><span class="arrow">&rarr;</span><span class="label">과매도, 상승 가능성</span></div>
+            <div class="note">14기간 설정이 표준이며, 더 빠른 신호를 원할 경우 9기간을 쓰기도 합니다. 70/30이 가장 일반적인 기준이고, 노이즈를 줄이려면 80/20처럼 더 엄격한 기준을 쓰기도 해요.</div>
+        </div>
+        <div class="indicator-visual">
+            <svg viewBox="0 0 240 160" role="img" aria-label="0에서 100까지의 RSI 게이지">
+                <rect x="10" y="50" width="68" height="34" rx="6" fill="#1D9E75" opacity="0.35"/>
+                <rect x="78" y="50" width="84" height="34" fill="#444441" opacity="0.5"/>
+                <rect x="162" y="50" width="68" height="34" rx="6" fill="#D85A30" opacity="0.4"/>
+                <line x1="78" y1="50" x2="78" y2="84" stroke="#888780" stroke-width="1"/>
+                <line x1="162" y1="50" x2="162" y2="84" stroke="#888780" stroke-width="1"/>
+                <text x="10" y="100" font-size="11" fill="#aaaaaa">0</text>
+                <text x="70" y="100" font-size="11" fill="#aaaaaa">30</text>
+                <text x="154" y="100" font-size="11" fill="#aaaaaa">70</text>
+                <text x="216" y="100" font-size="11" fill="#aaaaaa">100</text>
+                <circle cx="195" cy="67" r="6" fill="#f3d03e" stroke="#1e1e1e" stroke-width="2"/>
+                <text x="195" y="40" font-size="11" fill="#f3d03e" text-anchor="middle">예: 78</text>
+            </svg>
+        </div>
+    </div>
+
+    <div class="indicator-card">
+        <div class="indicator-text">
+            <h3>볼린저 밴드</h3>
+            <p>가격이 예상 변동성 범위 안에서 평균으로부터 얼마나 벗어났는지 보여줍니다.</p>
+            <div class="signal-row down"><span>상단 밴드에 닿음</span><span class="arrow">&rarr;</span><span class="label">과매수, 하락 가능성</span></div>
+            <div class="signal-row up"><span>하단 밴드에 닿음</span><span class="arrow">&rarr;</span><span class="label">과매도, 상승 가능성</span></div>
+            <div class="note">20기간 이동평균선에 표준편차 2배 밴드를 적용하는 것이 표준 설정이에요. 트레이더에 따라 단타는 분봉, 장기 투자는 일봉이나 주봉으로 시간 단위를 조정합니다.</div>
+        </div>
+        <div class="indicator-visual">
+            <svg viewBox="0 0 240 160" role="img" aria-label="볼린저 밴드 차트">
+                <path d="M10 50 Q60 30 110 55 T230 40" fill="none" stroke="#888780" stroke-width="1" stroke-dasharray="4 3" opacity="0.6"/>
+                <path d="M10 90 Q60 65 110 95 T230 75" fill="none" stroke="#888780" stroke-width="1.5"/>
+                <path d="M10 130 Q60 100 110 135 T230 110" fill="none" stroke="#888780" stroke-width="1" stroke-dasharray="4 3" opacity="0.6"/>
+                <circle cx="200" cy="50" r="5" fill="#D85A30"/>
+                <circle cx="130" cy="128" r="5" fill="#1D9E75"/>
+                <text x="195" y="34" font-size="10" fill="#D85A30" text-anchor="middle">상단</text>
+                <text x="130" y="148" font-size="10" fill="#1D9E75" text-anchor="middle">하단</text>
+            </svg>
+        </div>
+    </div>
+
+    <div class="indicator-card">
+        <div class="indicator-text">
+            <h3>이동평균선</h3>
+            <p>시간에 따른 가격을 평활화해 전체적인 추세 방향을 보여주는 선입니다.</p>
+            <div class="signal-row up"><span>가격이 선 위에 있음</span><span class="arrow">&rarr;</span><span class="label">상승 추세</span></div>
+            <div class="signal-row down"><span>가격이 선 아래에 있음</span><span class="arrow">&rarr;</span><span class="label">하락 추세</span></div>
+            <div class="note">SMA는 모든 구간에 동일한 가중치를 두고, EMA는 최근 가격에 더 큰 가중치를 두어 가격 변화에 더 빠르게 반응해요.</div>
+        </div>
+        <div class="indicator-visual">
+            <svg viewBox="0 0 240 160" role="img" aria-label="이동평균선과 가격이 교차하는 모습">
+                <path d="M10 110 L40 95 L70 100 L100 75 L130 80 L160 55 L190 60 L230 35" fill="none" stroke="#f3d03e" stroke-width="2"/>
+                <path d="M10 95 L40 92 L70 88 L100 82 L130 78 L160 70 L190 65 L230 58" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="5 3"/>
+                <text x="230" y="28" font-size="10" fill="#f3d03e" text-anchor="end">가격</text>
+                <text x="230" y="78" font-size="10" fill="#888780" text-anchor="end">이평선</text>
+            </svg>
+        </div>
+    </div>
+
+    <div class="indicator-card">
+        <div class="indicator-text">
+            <h3>거래량 급증</h3>
+            <p>거래량이 갑자기 급증하는 현상으로, 큰 가격 변동이 임박했다는 신호일 때가 많아요.</p>
+            <div class="signal-row down"><span>거래량이 갑자기 급증</span><span class="arrow">&rarr;</span><span class="label">큰 변동 가능성</span></div>
+            <div class="note">평소 거래량의 2~3배가 흔한 기준이지만, 더 높은 기준을 설정하는 경우도 있어요.</div>
+        </div>
+        <div class="indicator-visual">
+            <svg viewBox="0 0 240 160" role="img" aria-label="급증이 나타난 거래량 막대 그래프">
+                <rect x="10" y="110" width="20" height="30" fill="#444441"/>
+                <rect x="40" y="100" width="20" height="40" fill="#444441"/>
+                <rect x="70" y="115" width="20" height="25" fill="#444441"/>
+                <rect x="100" y="105" width="20" height="35" fill="#444441"/>
+                <rect x="130" y="30" width="20" height="110" fill="#D85A30"/>
+                <rect x="160" y="95" width="20" height="45" fill="#444441"/>
+                <rect x="190" y="108" width="20" height="32" fill="#444441"/>
+                <text x="140" y="22" font-size="10" fill="#D85A30" text-anchor="middle">급증</text>
+            </svg>
+        </div>
+    </div>
+
+</div>
+
+<footer style="background: #000; padding: 60px 24px;">
+  <div class="footer-inner" style="max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; text-align: left;">
+    <div class="footer-text">
+      <p style="margin: 0; color: var(--text-faint); font-size: 0.85rem;">&copy; 2026 Coin Guardian. All rights reserved.</p>
+      <p style="margin: 6px 0 0; color: var(--text-faint); font-size: 0.85rem;">문의: <a href="mailto:contact@coin-guardian.com" class="contact">contact@coin-guardian.com</a></p>
+    </div>
+
+    <a href="https://play.google.com/store/apps/details?id=com.coinguardian.app" class="footer-badge">
+      <img src="../google-play-badge.png" alt="Google Play에서 다운로드" style="height: 50px;">
+    </a>
+  </div>
+</footer>
+
+<style>
+  @media (max-width: 600px) {
+    .footer-inner {
+      flex-direction: column;
+      text-align: center !important;
+      justify-content: center !important;
+    }
+    .footer-badge {
+      order: -1;
+      margin-bottom: 8px;
+    }
+  }
+</style>
+
+<script>
+    const toggle = document.getElementById('navToggle');
+    const nav = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => {
+        nav.classList.toggle('open');
+    });
+</script>
+
+</body>
+</html>
